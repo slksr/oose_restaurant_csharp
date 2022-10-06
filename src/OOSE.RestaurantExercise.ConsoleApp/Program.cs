@@ -1,4 +1,5 @@
 ﻿using OOSE.RestaurantExercise.Logic;
+using OOSE.RestaurantExercise.Logic.Preparations;
 
 namespace OOSE.RestaurantExercise.ConsoleApp
 {
@@ -6,25 +7,25 @@ namespace OOSE.RestaurantExercise.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var simplePrep = new Preparation();
-            simplePrep.SetPreparationStep(new PreparationStep(CommonPreparations.Apron));
-
-            var hardrockPrep = new Preparation();
-            hardrockPrep.SetPreparationStep(new PreparationStep(CommonPreparations.Apron));
-            hardrockPrep.SetPreparationStep(new PreparationStep(CommonPreparations.Knifes));
-            hardrockPrep.SetPreparationStep(new PreparationStep(CommonPreparations.HardRock));
-
-            var soccerPrep = new Preparation();
-            soccerPrep.SetPreparationStep(new PreparationStep(CommonPreparations.Beer));
-            soccerPrep.SetPreparationStep(new PreparationStep(CommonPreparations.Anthem));
-
-            Cook cookCris = new Cook("Christian", simplePrep);
-            Cook cookPeter = new Cook("Peter", hardrockPrep);
-            Cook cookMaria = new Cook("Maria", soccerPrep);
-            Cook cookRody = new Cook("Rody", soccerPrep);
-
+            Cook cookCris = new Cook("Christian", new SimplePreparation());
+            Cook cookPeter = new Cook("Peter", new HardRockPreparation());
+            Cook cookMaria = new Cook("Maria", new SoccerPreparation(false));
+            Cook cookRody = new Cook("Rody", new SoccerPreparation());
 
             Restaurant restaurant = new Restaurant(new List<Cook>() { cookCris, cookPeter, cookMaria, cookRody });
+          
+            restaurant.StartShift();
+            
+            restaurant.EndContractCooksWithPreparation(typeof(SoccerPreparation));
+            Console.WriteLine($"Contract end for cooks with skill {typeof(SoccerPreparation).Name}. Number of cooks left {restaurant.Cooks.Count}" );
+            Console.WriteLine(" ========== ");
+
+            Console.WriteLine($"End contract for {cookPeter.Name}");
+            restaurant.EndContractCook(cookPeter);
+            Console.WriteLine(" ========== ");
+
+            Cook cookMichel = new Cook("Michel", new HardRockPreparation());
+            restaurant.AddContractCook(cookMichel);
             restaurant.StartShift();
         }
     }
