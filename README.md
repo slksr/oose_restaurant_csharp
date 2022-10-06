@@ -9,9 +9,9 @@ Your solution should be able to execute the preparation of all cooks by calling 
 
 Some examples: 
 - cook Christian uses a simple preparation: 
-  - he just needs to ‘put an apron on’ 
-  - this is also what most others cooks do. 
-- cook Peter needs the the hardrock preparation:
+  - he just needs to "put an apron on" 
+  - this is also what most other cooks do. 
+- cook Peter needs the hardrock preparation:
   - take a collection of knifes
   - set some hardrock music on. 
 - the cooks Maria and Rody need the soccer preparation 
