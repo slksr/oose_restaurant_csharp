@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOSE.RestaurantExercise.Logic.Preparations;
 
 namespace OOSE.RestaurantExercise.Logic
 {
@@ -15,6 +16,8 @@ namespace OOSE.RestaurantExercise.Logic
             this.cooks = cooks;
         }
 
+        public List<Cook> Cooks { get => cooks; }
+
         public void StartShift()
         {
             foreach(var cook in cooks)
@@ -24,5 +27,14 @@ namespace OOSE.RestaurantExercise.Logic
             }
         }
 
+
+        public void EndContractCooksWithPreparation(Type preparationType)
+        {
+            if (preparationType.BaseType != typeof(Preparation))
+            {
+                return;
+            }
+            cooks.RemoveAll(c=>c.Preparation.GetType() == preparationType);
+        }
     }
 }

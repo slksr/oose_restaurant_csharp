@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOSE.RestaurantExercise.Logic
+namespace OOSE.RestaurantExercise.Logic.Preparations
 {
     public class PreparationStep
     {
@@ -15,5 +15,5 @@ namespace OOSE.RestaurantExercise.Logic
         public string Step { get; private set; }
     }
 
-    
+
 }
