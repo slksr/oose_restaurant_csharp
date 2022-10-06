@@ -7,10 +7,10 @@ namespace OOSE.RestaurantExercise.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Cook cookCris = new Cook("Christian", new SimplePreparation());
-            Cook cookPeter = new Cook("Peter", new HardRockPreparation());
-            Cook cookMaria = new Cook("Maria", new SoccerPreparation(false));
-            Cook cookRody = new Cook("Rody", new SoccerPreparation());
+            Cook cookCris = new Cook("Christian", PreparationFactory.GetPreparation(PreparationType.Simpel));
+            Cook cookPeter = new Cook("Peter", PreparationFactory.GetPreparation(PreparationType.Hardrock));
+            Cook cookMaria = new Cook("Maria", PreparationFactory.GetPreparation(PreparationType.Soccer));
+            Cook cookRody = new Cook("Rody", PreparationFactory.GetPreparation(PreparationType.Soccer));
 
             Restaurant restaurant = new Restaurant(new List<Cook>() { cookCris, cookPeter, cookMaria, cookRody });
           
@@ -24,7 +24,7 @@ namespace OOSE.RestaurantExercise.ConsoleApp
             restaurant.EndContractCook(cookPeter);
             Console.WriteLine(" ========== ");
 
-            Cook cookMichel = new Cook("Michel", new HardRockPreparation());
+            Cook cookMichel = new Cook("Michel", PreparationFactory.GetPreparation(PreparationType.Hardrock));
             restaurant.AddContractCook(cookMichel);
             restaurant.StartShift();
         }
