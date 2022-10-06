@@ -18,6 +18,15 @@ namespace OOSE.RestaurantExercise.ConsoleApp
             
             restaurant.EndContractCooksWithPreparation(typeof(SoccerPreparation));
             Console.WriteLine($"Contract end for cooks with skill {typeof(SoccerPreparation).Name}. Number of cooks left {restaurant.Cooks.Count}" );
+            Console.WriteLine(" ========== ");
+
+            Console.WriteLine($"End contract for {cookPeter.Name}");
+            restaurant.EndContractCook(cookPeter);
+            Console.WriteLine(" ========== ");
+
+            Cook cookMichel = new Cook("Michel", new HardRockPreparation());
+            restaurant.AddContractCook(cookMichel);
+            restaurant.StartShift();
         }
     }
 }

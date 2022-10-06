@@ -14,9 +14,12 @@ namespace OOSE.RestaurantExercise.Logic
         public Preparation Preparation;
         public string Name { get; }
 
+        public bool FinishedPreparation { get; private set; }
+
         public string StartPreparation()
         {
             Preparation.SetPreparationStep();
+            FinishedPreparation = true;
             return Prepare();
         }
 

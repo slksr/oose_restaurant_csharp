@@ -20,7 +20,7 @@ namespace OOSE.RestaurantExercise.Logic
 
         public void StartShift()
         {
-            foreach(var cook in cooks)
+            foreach(var cook in cooks.Where(c=>!c.FinishedPreparation))
             {
                 Console.WriteLine(cook.StartPreparation());
                 Console.WriteLine(" =========== ");
@@ -35,6 +35,22 @@ namespace OOSE.RestaurantExercise.Logic
                 return;
             }
             cooks.RemoveAll(c=>c.Preparation.GetType() == preparationType);
+        }
+
+        public void EndContractCook(Cook cook)
+        {
+            if (cooks.Any(c => c.Name == cook.Name && c.Preparation == cook.Preparation))
+            {
+                cooks.Remove(cook);
+            }
+        }
+
+        public void AddContractCook(Cook cook)
+        {
+            if (!cooks.Any(c => c.Name == cook.Name && c.Preparation == cook.Preparation))
+            {
+                cooks.Add(cook);
+            }
         }
     }
 }
