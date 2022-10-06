@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace OOSE.RestaurantExercise.Logic.Preparations
 {
-    public class SimplePreparation : Preparation
+    public class SimplePreparation : IPreparation
     {
-        public override void SetPreparationStep()
+        public SimplePreparation()
+        {
+            PreparationSteps = new List<PreparationStep>();
+        }
+        public List<PreparationStep> PreparationSteps { get; }
+
+        public void SetPreparationStep()
         {
             PreparationSteps.Add(new PreparationStep(CommonPreparations.Apron));
         }

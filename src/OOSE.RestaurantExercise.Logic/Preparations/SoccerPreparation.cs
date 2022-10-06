@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace OOSE.RestaurantExercise.Logic.Preparations
 {
-    public class SoccerPreparation : Preparation
+    public class SoccerPreparation : IPreparation
     {
         private readonly bool useSimplePrep;
 
         public SoccerPreparation(bool useSimplePrep = true)
         {
+            PreparationSteps = new List<PreparationStep>(); 
             this.useSimplePrep = useSimplePrep;
         }
-        public override void SetPreparationStep()
+
+        public List<PreparationStep> PreparationSteps { get; }
+
+        public void SetPreparationStep()
         {
             if (useSimplePrep)
             {

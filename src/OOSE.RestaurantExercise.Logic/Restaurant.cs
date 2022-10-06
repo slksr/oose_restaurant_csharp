@@ -30,7 +30,7 @@ namespace OOSE.RestaurantExercise.Logic
 
         public void EndContractCooksWithPreparation(Type preparationType)
         {
-            if (preparationType.BaseType != typeof(Preparation))
+            if (preparationType.BaseType != typeof(IPreparation))
             {
                 return;
             }

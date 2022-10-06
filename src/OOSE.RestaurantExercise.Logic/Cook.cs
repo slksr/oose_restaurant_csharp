@@ -5,13 +5,13 @@ namespace OOSE.RestaurantExercise.Logic
 {
     public class Cook
     {
-        public Cook(string name, Preparation preparation)
+        public Cook(string name, IPreparation preparation)
         {
             Name = name;
             Preparation = preparation;
         }
 
-        public Preparation Preparation;
+        public IPreparation Preparation;
         public string Name { get; }
 
         public bool FinishedPreparation { get; private set; }
